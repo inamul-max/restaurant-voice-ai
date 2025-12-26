@@ -250,7 +250,21 @@
         //   if (window.Omnidim && Omnidim.open) Omnidim.open();
         // }, 3000);
     </script>
+    <script>
+  const talkBtn = document.getElementById('talkBtn');
+
+  talkBtn.addEventListener('click', () => {
+    if (window.Omnidim) {
+      window.Omnidim.open(); // Bottom widget open ho jayega
+    } else {
+      console.log("Omnidim widget loaded nahi hua");
+    }
+  });
+</script>
+
 
 </body>
+<button id="talkBtn" class="btn btn-primary">Talk to AI</button>
+
 
 </html>
