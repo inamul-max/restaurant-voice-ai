@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Restaurant AI Voice Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        :root {
+            --bg: #0b0f14;
+            --card: #121826;
+            --accent: #00e5ff;
+            --text: #e8ecf1;
+            --muted: #9aa4b2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Inter, Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(1200px 600px at 10% -10%, #0f2230, transparent),
+                radial-gradient(800px 500px at 90% 10%, #102a3a, transparent),
+                var(--bg);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 960px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            opacity: .9;
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        .pill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(0, 229, 255, .12);
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        .hero {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 20px;
+            padding: 28px;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 820px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .left h1 {
+            font-size: 42px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .left p {
+            color: var(--muted);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .feat {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 14px;
+            padding: 14px;
+            font-size: 14px;
+        }
+
+        .cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 14px;
+            padding: 14px 18px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00e5ff, #4dd0ff);
+            color: #001018;
+            font-weight: 700;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .16);
+            color: var(--text);
+        }
+
+        .right {
+            background: rgba(0, 0, 0, .35);
+            border: 1px dashed rgba(255, 255, 255, .18);
+            border-radius: 18px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .mock {
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .06);
+            padding: 14px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* Floating helper note (mobile friendly) */
+        .note {
+            position: fixed;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, .6);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #cfefff;
+            backdrop-filter: blur(6px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="nav">
+            <div class="brand">🍽️ OmniRestaurant</div>
+            <div class="pill">Voice-Only AI</div>
+        </div>
+
+        <section class="hero">
+            <div class="left">
+                <h1>Talk to Our Restaurant AI</h1>
+                <p>
+                    Ask about menu, timings, reservations and offers.
+                    No typing. Just speak.
+                </p>
+
+                <div class="features">
+                    <div class="feat">Real-time voice conversation</div>
+                    <div class="feat">Menu & reservation support</div>
+                    <div class="feat">Mobile-first experience</div>
+                    <div class="feat">24×7 AI assistant</div>
+                </div>
+
+                <div class="cta">
+                    <button id="talkBtn" class="btn btn-primary">
+                        🎙️ Talk to AI
+                    </button>
+                    <button id="openBtn" class="btn btn-ghost">
+                        Open Assistant
+                    </button>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="mock">“Hi! Welcome to OmniRestaurant. How can I help you today?”</div>
+                <div class="mock">Try: “Book a table for 2 at 8 PM”</div>
+                <div class="mock">Try: “What are today’s specials?”</div>
+            </div>
+        </section>
+
+        <footer>
+            Powered by Omnidim Voice AI
+        </footer>
+    </div>
+
+    <div class="note">
+        Allow microphone when prompted
+    </div>
+
+    <script id="omnidimension-web-widget" async
+        src="https://omnidim.io/web_widget.js?secret_key=16ebdd7f5092ac323b23c135ed66d56a">
+
+        </script>
+    <script id="omnidimension-web-widget" async
+        src="https://omnidim.io/web_widget.js?secret_key=PASTE_YOUR_SECRET_KEY_HERE">
+        </script>
+
+    <!-- Auto-open / Button controls -->
+    <script>
+        // Button click pe widget open / start
+        document.getElementById("openBtn").onclick = function () {
+            if (window.Omnidim && Omnidim.open) Omnidim.open();
+        };
+
+        document.getElementById("talkBtn").onclick = function () {
+            if (window.Omnidim && Omnidim.start) {
+                Omnidim.open();
+                Omnidim.start(); // voice start
+            } else if (window.Omnidim && Omnidim.open) {
+                Omnidim.open();
+            }
+        };
+
+        // Optional: page load ke baad auto-open (mobile pe avoid ho sakta)
+        // setTimeout(() => {
+        //   if (window.Omnidim && Omnidim.open) Omnidim.open();
+        // }, 3000);
+    </script>
+
+</body>
+
+</html>
